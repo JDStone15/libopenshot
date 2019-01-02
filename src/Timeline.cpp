@@ -221,7 +221,6 @@ std::shared_ptr<Frame> Timeline::GetOrCreateFrame(Clip* clip, int64_t number)
 		clip->SetMaxSize(info.width, info.height);
 
 		// Attempt to get a frame (but this could fail if a reader has just been closed)
-		//#pragma omp critical (T_GetOtCreateFrame) <- this blocks paralleism
 		new_frame = std::shared_ptr<Frame>(clip->GetFrame(number));
 
 		// Return real frame
@@ -254,7 +253,6 @@ void Timeline::add_layer(std::shared_ptr<Frame> new_frame, Clip* source_clip, in
 	// Get the clip's frame & image
 	std::shared_ptr<Frame> source_frame;
 	
-	//#pragma omp critical (T_addLayer) <- This blocks parallelism
 	source_frame = GetOrCreateFrame(source_clip, clip_frame_number);
 
 	// No frame found... so bail
@@ -664,9 +662,6 @@ std::shared_ptr<Frame> Timeline::GetFrame(int64_t requested_frame)
 		// Debug output
 		ZmqLogger::Instance()->AppendDebugMethod("Timeline::GetFrame (Cached frame found)", "requested_frame", requested_frame, "", -1, "", -1, "", -1, "", -1, "", -1);
 
-		//#pragma omp critical
-		//std::cout << "\tTimeline::GetFrame(" << requested_frame << ") found frame in cache" << endl;
-
 		// Return cached frame
 		return frame;
 	}
@@ -773,11 +768,8 @@ std::shared_ptr<Frame> Timeline::GetFrame(int64_t requested_frame)
 
 		// Add final frame to cache
 		#pragma omp critical(T_AddFrame)
-		{
-			final_cache->Add(new_frame);
-			//std::cout << "\tTimeline::GetFrame(" << requested_frame << ") added frame to cache | ";
-			//std::cout << "Timeline::GetFrame()::final_cache.count() " << final_cache->Count() << endl;
-		}
+		final_cache->Add(new_frame);
+		
 		// Return frame (or blank frame)
 		return new_frame;
 	}
@@ -1363,7 +1355,6 @@ void Timeline::apply_json_to_timeline(Json::Value change) {
 // Clear all caches
 void Timeline::ClearAllCache() {
 
-	//std::cout << "--------Timeline::ClearAllCache()---------" << endl;
 	// Get lock (prevent getting frames while this happens)
 	const GenericScopedLock<CriticalSection> lock(getFrameCriticalSection);
 
