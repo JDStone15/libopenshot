@@ -109,11 +109,20 @@ namespace openshot
 	return std::shared_ptr<Frame>();
     }
 
+	int64_t AudioPlaybackThread::getCurrentPosition() {
+		return source ? source->getNextReadPosition() : 0;
+	}
+
     // Get the currently playing frame number
     int64_t AudioPlaybackThread::getCurrentFramePosition()
     {
 	return source ? source->getEstimatedFrame() : 0;
     }
+
+	int64_t AudioPlaybackThread::getCurrentNumberOfFrameSamples()
+	{
+		return source ? source->getEstimatedSamplesPerFrame() : 0;
+	}
 
 	// Seek the audio thread
 	void AudioPlaybackThread::Seek(int64_t new_position)

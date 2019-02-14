@@ -82,7 +82,9 @@ namespace openshot
 	AudioTransportSource transport;
 	MixerAudioSource mixer;
 	AudioReaderSource *source;
-	double sampleRate;
+	public:
+		double sampleRate;
+	private:
 	int numChannels;
 	WaitableEvent play;
 	WaitableEvent played;
@@ -104,6 +106,9 @@ namespace openshot
 	/// Get the current frame number being played
 	int64_t getCurrentFramePosition();
 
+	int64_t getCurrentPosition();
+	int64_t getCurrentNumberOfFrameSamples();
+	
 	/// Play the audio
 	void Play();
 

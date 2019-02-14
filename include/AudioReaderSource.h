@@ -123,6 +123,8 @@ namespace openshot
 	    /// Get the estimate frame that is playing at this moment
 	    int64_t getEstimatedFrame() const { return int64_t(estimated_frame); }
 
+		int64_t getEstimatedSamplesPerFrame() const { return int64_t(estimated_samples_per_frame); }
+
 	    /// Set Speed (The speed and direction to playback a reader (1=normal, 2=fast, 3=faster, -1=rewind, etc...)
 	    void setSpeed(int new_speed) { speed = new_speed; }
 	    /// Get Speed (The speed and direction to playback a reader (1=normal, 2=fast, 3=faster, -1=rewind, etc...)
