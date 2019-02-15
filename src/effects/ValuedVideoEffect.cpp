@@ -1,4 +1,4 @@
-#include "../../include/effects/ValuedVideoEffect.hpp"
+#include "../../include/effects/ValuedVideoEffect.h"
 
 #include <QUuid>
 #include <algorithm>

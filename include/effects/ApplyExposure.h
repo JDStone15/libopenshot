@@ -2,7 +2,7 @@
 #define APPLYEXPOSURE_HPP
 
 #include "../EffectBase.h"
-#include "ValuedVideoEffect.hpp"
+#include "ValuedVideoEffect.h"
 
 namespace openshot {
 class ApplyExposure : public ValuedVideoEffect {

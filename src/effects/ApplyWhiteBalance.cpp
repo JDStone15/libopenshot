@@ -1,5 +1,5 @@
-#include "../../include/effects/ApplyWhiteBalance.hpp"
-#include "../../include/utilities/MathUtilities.hpp"
+#include "../../include/effects/ApplyWhiteBalance.h"
+#include "../../include/utilities/MathUtilities.h"
 #include <QDebug>
 #include <QImage>
 #include <algorithm>

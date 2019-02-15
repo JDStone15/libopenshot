@@ -1,5 +1,5 @@
-#include "../../include/effects/ApplyVibrance.hpp"
-#include "../../include/utilities/MathUtilities.hpp"
+#include "../../include/effects/ApplyVibrance.h"
+#include "../../include/utilities/MathUtilities.h"
 #include <QDebug>
 #include <QImage>
 #include <algorithm>

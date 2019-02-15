@@ -1,5 +1,5 @@
-#include "../../include/effects/ApplySharpness.hpp"
-#include "../../include/utilities/MathUtilities.hpp"
+#include "../../include/effects/ApplySharpness.h"
+#include "../../include/utilities/MathUtilities.h"
 #include <QDebug>
 #include <QImage>
 #include <cfenv>

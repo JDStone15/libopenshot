@@ -3,7 +3,7 @@
 
 #include "../EffectBase.h"
 
-#include "ValuedVideoEffect.hpp"
+#include "ValuedVideoEffect.h"
 
 namespace openshot {
 class ApplyWhiteBalance : public ValuedVideoEffect {

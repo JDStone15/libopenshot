@@ -1,5 +1,5 @@
-#include "../../include/effects/ApplySaturation.hpp"
-#include "../../include/utilities/MathUtilities.hpp"
+#include "../../include/effects/ApplySaturation.h"
+#include "../../include/utilities/MathUtilities.h"
 #include <QDebug>
 #include <QImage>
 #include <cfenv>

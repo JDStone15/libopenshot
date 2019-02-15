@@ -1,5 +1,5 @@
-#include "../../include/effects/AdjustLighting.hpp"
-#include "../../include/utilities/MathUtilities.hpp"
+#include "../../include/effects/AdjustLighting.h"
+#include "../../include/utilities/MathUtilities.h"
 #include <QDebug>
 #include <QImage>
 #include <QUuid>

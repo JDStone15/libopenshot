@@ -1,5 +1,5 @@
-#include "../../include/effects/ApplyLut.hpp"
-#include "../../include/utilities/MathUtilities.hpp"
+#include "../../include/effects/ApplyLut.h"
+#include "../../include/utilities/MathUtilities.h"
 #include <QDebug>
 #include <QImage>
 #include <QUuid>

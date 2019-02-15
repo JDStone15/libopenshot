@@ -1,5 +1,5 @@
-#include "../../include/effects/AdjustVfxColor.hpp"
-#include "../../include/utilities/MathUtilities.hpp"
+#include "../../include/effects/AdjustVfxColor.h"
+#include "../../include/utilities/MathUtilities.h"
 #include <QDebug>
 #include <QImage>
 #include <QUuid>

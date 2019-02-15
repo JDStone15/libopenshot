@@ -1,5 +1,5 @@
-#include "../../include/effects/ApplyTint.hpp"
-#include "../../include/utilities/MathUtilities.hpp"
+#include "../../include/effects/ApplyTint.h"
+#include "../../include/utilities/MathUtilities.h"
 #include <QDebug>
 #include <QImage>
 #include <cfenv>

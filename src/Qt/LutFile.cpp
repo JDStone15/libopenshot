@@ -1,12 +1,9 @@
-#include "../include/LutFile.hpp"
-#include "../include/utilities/string_helpers.hpp"
+#include "../../include/Qt/LutFile.h"
 #include <QColor>
 #include <QFile>
 #include <QTextStream>
-#include <spdlog/fmt/fmt.h>
 
 using namespace std;
-using namespace fmt;
 
 namespace openshot {
 LutFile::LutFile(QString asset_id, QString filename)
@@ -52,14 +49,16 @@ void LutFile::initialize() {
                 line.splitRef("\"", QString::SplitBehavior::SkipEmptyParts);
             if (split.length() < 2) {
                 throw format_exception(
-                    "Invalid TITLE. Received invalid title {}. Line: {}; File: {}"_format(
-                        split.length(), line_num, source_file));
+                    "Invalid TITLE. Received invalid title '" + to_string(split.length()) +
+                    "'. Line: " + to_string(line_num) +
+                    "; File: " + source_file.toStdString());
             }
 
             if (!(split[1].startsWith("\"") && split.last().endsWith("\""))) {
                 throw format_exception(
-                    "Invalid TITLE. Expected quoted string but got '{}'; Line: {}; File: {}"_format(
-                        line, line_num, source_file));
+                    "Invalid TITLE. Expected quoted string but got '" + line.toStdString() +
+                    "'; Line: " + to_string(line_num) +
+                    "; File: " + source_file.toStdString());
             }
 
             lut_title = split[1].toString().mid(1, split[1].length() - 2);
@@ -69,8 +68,9 @@ void LutFile::initialize() {
         if (lede.startsWith("LUT_3D_SIZE", Qt::CaseInsensitive)) {
             if (split.length() != 2) {
                 throw format_exception(
-                    "Invalid LUT_3D_SIZE. Received invalid line length {}. Line: {}; File: {}"_format(
-                        split.length(), line_num, source_file));
+                    "Invalid LUT_3D_SIZE. Received invalid line length " + to_string(split.length()) +
+                    ". Line: " + to_string(line_num) + 
+                    "; File: " + source_file.toStdString());
             }
 
             auto success = true;
@@ -78,8 +78,9 @@ void LutFile::initialize() {
 
             if (!success) {
                 throw format_exception(
-                    "Invalid LUT_3D_SIZE. Received invalid size value {}. Line: {}; File: {}"_format(
-                        split.length(), line_num, source_file));
+                    "Invalid LUT_3D_SIZE. Received invalid size value " + to_string(split.length()) +
+                    ". Line: " + to_string(line_num) + 
+                    "; File: " + source_file.toStdString());
             }
 
             lut.reserve(size * size * size * 3);
@@ -89,8 +90,9 @@ void LutFile::initialize() {
         if (lede.startsWith("DOMAIN_MIN", Qt::CaseInsensitive)) {
             if (split.length() != 2 && split.length() != 4) {
                 throw format_exception(
-                    "Invalid DOMAIN_MIN. Received invalid line length {}. Line: {}; File: {}"_format(
-                        split.length(), line_num, source_file));
+                    "Invalid DOMAIN_MIN. Received invalid line length " + to_string(split.length()) +
+                    ". Line: " + to_string(line_num) + 
+                    "; File: " + source_file.toStdString());
             }
 
             auto success = true;
@@ -100,8 +102,9 @@ void LutFile::initialize() {
 
             if (!success) {
                 throw format_exception(
-                    "Invalid DOMAIN_MIN. Received invalid domain value {}. Line: {}; File: {}"_format(
-                        split.length(), line_num, source_file));
+                    "Invalid DOMAIN_MIN. Received invalid domain value " + to_string(split.length()) +
+                    ". Line: " + to_string(line_num) + 
+                    "; File: " + source_file.toStdString());
             }
             continue;
         }
@@ -109,8 +112,9 @@ void LutFile::initialize() {
         if (lede.startsWith("DOMAIN_MAX", Qt::CaseInsensitive)) {
             if (split.length() != 2 && split.length() != 4) {
                 throw format_exception(
-                    "Invalid DOMAIN_MAX. Received invalid line length {}. Line: {}; File: {}"_format(
-                        split.length(), line_num, source_file));
+                    "Invalid DOMAIN_MAX. Received invalid line length " + to_string(split.length()) +
+                    ". Line: " + to_string(line_num) + 
+                    "; File: " + source_file.toStdString());
             }
 
             auto success = true;
@@ -120,16 +124,18 @@ void LutFile::initialize() {
 
             if (!success) {
                 throw format_exception(
-                    "Invalid DOMAIN_MAX. Received invalid domain value {}. Line: {}; File: {}"_format(
-                        split.length(), line_num, source_file));
+                    "Invalid DOMAIN_MIN. Received invalid domain value " + to_string(split.length()) +
+                    ". Line: " + to_string(line_num) + 
+                    "; File: " + source_file.toStdString());
             }
             continue;
         }
 
         if (split.length() != 3) {
             throw format_exception(
-                "Invalid LUT row. Received invalid line length {}. Line: {}; File: {}"_format(
-                    split.length(), line_num, source_file));
+                "Invalid LUT row. Received invalid line length " + to_string(split.length()) +
+                ". Line: " + to_string(line_num) + 
+                "; File: " + source_file.toStdString());
         }
 
         for (auto i = 0; i < 3; i++) {
@@ -138,8 +144,9 @@ void LutFile::initialize() {
 
             if (!success) {
                 throw format_exception(
-                    "Invalid LUT row. Received invalid domain value {}. Line: {}; File: {}"_format(
-                        split.length(), line_num, source_file));
+                    "Invalid LUT row. Received invalid domain value " + to_string(split.length()) +
+                    ". Line: " + to_string(line_num) + 
+                    "; File: " + source_file.toStdString());
             }
         }
 
@@ -147,8 +154,10 @@ void LutFile::initialize() {
 
     if (lut.size() != size * size * size * 3) {
         throw format_exception(
-            "Invalid cube file. Received invalid number of rows {}. Expected {}. Line: {}; File: {}"_format(
-                lut.size() / 3, size * size * size * 3, line_num, source_file));
+            "Invalid cube file. Received invalid number of rows " + to_string(lut.size() / 3) + 
+            ". Expected " + to_string(size * size * size * 3) + 
+            ". Line: " + to_string(line_num) + 
+            "; File: " + source_file.toStdString());
     }
 
     initialized.store(true);

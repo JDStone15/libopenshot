@@ -1,7 +1,7 @@
 #ifndef APPLYLUT_HPP
 #define APPLYLUT_HPP
 
-#include "../LutFile.hpp"
+#include "../Qt/LutFile.h"
 #include "../EffectBase.h"
 #include <QJsonObject>
 

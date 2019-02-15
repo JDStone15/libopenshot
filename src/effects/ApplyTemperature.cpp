@@ -1,5 +1,5 @@
-#include "../../include/effects/ApplyTemperature.hpp"
-#include "../../include/utilities/MathUtilities.hpp"
+#include "../../include/effects/ApplyTemperature.h"
+#include "../../include/utilities/MathUtilities.h"
 #include <QDebug>
 #include <QImage>
 #include <cfenv>

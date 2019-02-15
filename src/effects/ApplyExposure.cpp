@@ -1,5 +1,5 @@
-#include "../../include/effects/ApplyExposure.hpp"
-#include "../../include/utilities/MathUtilities.hpp"
+#include "../../include/effects/ApplyExposure.h"
+#include "../../include/utilities/MathUtilities.h"
 #include <QDebug>
 #include <QImage>
 #include <cfenv>
