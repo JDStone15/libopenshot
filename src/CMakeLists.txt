@@ -255,7 +255,10 @@ SET ( OPENSHOT_SOURCE_FILES
 
 		# Qt Video Player
 		${QT_PLAYER_FILES}
-		${MOC_FILES})
+		${MOC_FILES}
+		
+		# TheRipper
+		LutFile.cpp)
 
 IF (NOT USE_SYSTEM_JSONCPP)
 	# Third Party JSON Parser

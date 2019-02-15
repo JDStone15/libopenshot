@@ -153,4 +153,4 @@ void LutFile::initialize() {
 
     initialized.store(true);
 }
-} // namespace ripper
+} // namespace openshot

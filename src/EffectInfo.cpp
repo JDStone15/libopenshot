@@ -84,31 +84,31 @@ EffectBase* EffectInfo::CreateEffect(string effect_type) {
 		return new Wave();
 
 	else if (effect_type == "Exposure")
-        return new ApplyExposure();
+        	return new ApplyExposure();
     
 	else if (effect_type == "Lut")
-        return new ApplyLut();
+        	return new ApplyLut();
     
 	else if (effect_type == "Saturation")
-        return new ApplySaturation();
+        	return new ApplySaturation();
     
 	else if (effect_type == "Sharpness")
-        return new ApplySharpness();
+        	return new ApplySharpness();
     
 	else if (effect_type == "Temperature")
-        return new ApplyTemperature();
+        	return new ApplyTemperature();
 
-    else if (effect_type == "Tint")
-        return new ApplyTint();
+	else if (effect_type == "Tint")
+		return new ApplyTint();
     
 	else if (effect_type == "Vibrance")
-        return new ApplyVibrance();
+        	return new ApplyVibrance();
     
 	else if (effect_type == "AdjustLighting")
-        return new AdjustLighting();
+        	return new AdjustLighting();
     
 	else if(effect_type == "AdjustVfxColor")
-        return new AdjustVfxColor();
+        	return new AdjustVfxColor();
     
 	return NULL;
 }
