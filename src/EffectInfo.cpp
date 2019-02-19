@@ -82,6 +82,34 @@ EffectBase* EffectInfo::CreateEffect(string effect_type) {
 
 	else if (effect_type == "Wave")
 		return new Wave();
+
+	else if (effect_type == "Exposure")
+        	return new ApplyExposure();
+    
+	else if (effect_type == "Lut")
+        	return new ApplyLut();
+    
+	else if (effect_type == "Saturation")
+        	return new ApplySaturation();
+    
+	else if (effect_type == "Sharpness")
+        	return new ApplySharpness();
+    
+	else if (effect_type == "Temperature")
+        	return new ApplyTemperature();
+
+	else if (effect_type == "Tint")
+		return new ApplyTint();
+    
+	else if (effect_type == "Vibrance")
+        	return new ApplyVibrance();
+    
+	else if (effect_type == "AdjustLighting")
+        	return new AdjustLighting();
+    
+	else if(effect_type == "AdjustVfxColor")
+        	return new AdjustVfxColor();
+    
 	return NULL;
 }
 
@@ -106,6 +134,13 @@ Json::Value EffectInfo::JsonValue() {
 	root.append(Saturation().JsonInfo());
 	root.append(Shift().JsonInfo());
 	root.append(Wave().JsonInfo());
+	root.append(ApplyExposure().JsonInfo());
+	root.append(ApplyLut().JsonInfo());
+	root.append(ApplyTemperature().JsonInfo());
+	root.append(ApplyTint().JsonInfo());
+	root.append(ApplyVibrance().JsonInfo());
+	root.append(AdjustLighting().JsonInfo());
+	root.append(AdjustVfxColor().JsonInfo());
 
 	// return JsonValue
 	return root;

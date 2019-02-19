@@ -43,6 +43,16 @@
 #include "effects/Saturation.h"
 #include "effects/Shift.h"
 #include "effects/Wave.h"
-
+#include "effects/AdjustLighting.h"
+#include "effects/AdjustVfxColor.h"
+#include "effects/ApplyExposure.h"
+#include "effects/ApplySaturation.h"
+#include "effects/ApplySharpness.h"
+#include "effects/ApplyTint.h"
+#include "effects/ApplyTemperature.h"
+#include "effects/ApplyVibrance.h"
+#include "effects/ApplyWhiteBalance.h"
+#include "effects/ValuedVideoEffect.h"
+#include "effects/ApplyLut.h"
 
 #endif
